@@ -10,11 +10,12 @@ import 'swiper/css/pagination';
 import './Headlines.css';
 
 const headlineVideos = [
-  { id: 1, title: 'Headline 1', img: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&h=450&fit=crop' },
-  { id: 2, title: 'Headline 2', img: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&h=450&fit=crop' },
-  { id: 3, title: 'Headline 3', img: 'https://images.unsplash.com/photo-1557425955-df376b5903c8?w=800&h=450&fit=crop' },
-  { id: 4, title: 'Headline 4', img: 'https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800&h=450&fit=crop' },
-  { id: 5, title: 'Headline 5', img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&h=450&fit=crop' }
+  { id: 1, title: 'Headline 1', img: 'https://img.youtube.com/vi/XobA5Yawdt8/maxresdefault.jpg', url: 'https://youtu.be/XobA5Yawdt8' },
+  { id: 2, title: 'Headline 2', img: 'https://img.youtube.com/vi/MYvmS-1kSSI/maxresdefault.jpg', url: 'https://youtu.be/MYvmS-1kSSI' },
+  { id: 3, title: 'Headline 3', img: 'https://img.youtube.com/vi/HEyqztqG-WA/maxresdefault.jpg', url: 'https://youtu.be/HEyqztqG-WA' },
+  { id: 4, title: 'Headline 4', img: 'https://img.youtube.com/vi/XobA5Yawdt8/maxresdefault.jpg', url: 'https://youtu.be/XobA5Yawdt8' },
+  { id: 5, title: 'Headline 5', img: 'https://img.youtube.com/vi/MYvmS-1kSSI/maxresdefault.jpg', url: 'https://youtu.be/MYvmS-1kSSI' },
+  { id: 6, title: 'Headline 6', img: 'https://img.youtube.com/vi/HEyqztqG-WA/maxresdefault.jpg', url: 'https://youtu.be/HEyqztqG-WA' }
 ];
 
 const Headlines = () => {
@@ -61,7 +62,7 @@ const Headlines = () => {
           >
             {headlineVideos.map((video) => (
               <SwiperSlide key={video.id} className="headlines-slide">
-                <div className="headline-card">
+                <a href={video.url} target="_blank" rel="noopener noreferrer" className="headline-card" style={{ display: 'block' }}>
                   <div className="headline-thumbnail-wrapper">
                     <img src={video.img} alt={video.title} />
                     <div className="play-button-overlay">
@@ -70,7 +71,7 @@ const Headlines = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </SwiperSlide>
             ))}
           </Swiper>
