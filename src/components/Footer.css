@@ -1,0 +1,102 @@
+.main-footer {
+  background: #232427; /* Dark gray matching screenshot */
+  padding: 4rem 0 2rem;
+  text-align: center;
+  color: #ccc;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-emblem {
+  height: 60px;
+  /* CSS Filter to make the black SVG emblem appear golden */
+  filter: invert(75%) sepia(35%) saturate(830%) hue-rotate(3deg) brightness(95%) contrast(93%);
+}
+
+.footer-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 2.2rem;
+  color: #c9a050; /* Golden text */
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.footer-description {
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #f1f1f1;
+  margin-bottom: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 3rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #666;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  background: transparent;
+}
+
+.social-icon:hover {
+  background: #c9a050;
+  border-color: #c9a050;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: #444;
+  margin-bottom: 1.5rem;
+}
+
+.footer-bottom {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .footer-title {
+    font-size: 1.5rem;
+  }
+  .footer-emblem {
+    height: 45px;
+  }
+  .footer-description {
+    font-size: 0.95rem;
+  }
+}

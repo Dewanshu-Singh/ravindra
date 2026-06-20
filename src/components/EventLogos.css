@@ -1,0 +1,67 @@
+.event-logos-wrapper {
+  background: transparent;
+  padding: 2rem 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.event-logos-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.event-logos-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.15); /* Orange glow */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.logo-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.4);
+  border-color: #f97316;
+}
+
+.logo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 1.5rem)); }
+}
+
+@media (max-width: 768px) {
+  .logo-item {
+    width: 90px;
+    height: 90px;
+  }
+  .event-logos-track {
+    gap: 2rem;
+  }
+}

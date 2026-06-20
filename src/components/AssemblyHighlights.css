@@ -1,0 +1,173 @@
+.assembly-section {
+  position: relative;
+}
+
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.view-all-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-all-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Swiper Customizations */
+.assembly-swiper-container {
+  width: 100%;
+  padding-bottom: 3rem;
+}
+
+.highlight-swiper {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.highlight-slide {
+  width: 280px;
+  transition: all 0.4s ease;
+}
+
+/* Shady blur effect for non-active slides */
+.highlight-slide:not(.swiper-slide-active) {
+  opacity: 0.4;
+  filter: blur(4px) brightness(0.7);
+  pointer-events: none;
+}
+
+.vertical-video-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9/16;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  background: #10141a;
+  transition: transform 0.4s ease;
+}
+
+.video-thumbnail-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.video-thumbnail-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.vertical-video-card:hover .video-thumbnail-wrapper img {
+  transform: scale(1.05);
+}
+
+.play-button-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+.vertical-video-card:hover .play-button-overlay {
+  background: rgba(0,0,0,0.4);
+}
+
+.play-icon-circle {
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.6);
+  color: white;
+  font-size: 1.5rem;
+  padding-left: 5px; /* Visual center adjustment for play icon */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.vertical-video-card:hover .play-icon-circle {
+  transform: scale(1.1);
+  background: rgba(249, 115, 22, 0.8);
+  border-color: transparent;
+}
+
+/* Customizing Swiper Navigation Arrows */
+.highlight-swiper .swiper-button-next,
+.highlight-swiper .swiper-button-prev {
+  color: #f97316;
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.highlight-swiper .swiper-button-next:after,
+.highlight-swiper .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.highlight-swiper .swiper-button-next:hover,
+.highlight-swiper .swiper-button-prev:hover {
+  background: #f97316;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .section-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .highlight-slide {
+    width: 240px;
+  }
+
+  .highlight-swiper .swiper-button-next,
+  .highlight-swiper .swiper-button-prev {
+    display: none;
+  }
+
+  .assembly-swiper-container {
+    padding-bottom: 1rem;
+  }
+  
+  .highlight-swiper {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .highlight-slide {
+    width: 220px;
+  }
+}

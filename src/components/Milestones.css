@@ -1,0 +1,158 @@
+.milestones-section {
+  position: relative;
+  padding-bottom: 10vh;
+}
+
+.sticky-header {
+  margin-bottom: 2rem;
+}
+
+.cards-wrapper {
+  position: relative;
+}
+
+.card-container {
+  height: 100vh;
+  display: flex;
+  align-items: center; /* Center the card perfectly in the viewport */
+  justify-content: center;
+  position: sticky;
+  top: 0;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 480px;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 40px;
+  padding: 0;
+  overflow: hidden;
+  background: rgba(20, 24, 30, 0.6);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0 40px rgba(249, 115, 22, 0.05);
+  transform-origin: top center;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-container:hover .card-content {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 40px 80px rgba(249, 115, 22, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0 80px rgba(249, 115, 22, 0.08);
+}
+
+.card-inner {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.card-text {
+  width: 55%;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-text::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card-image-wrapper {
+  width: 45%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0 40px 40px 0;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card-container:hover .card-image-wrapper img {
+  transform: scale(1.05);
+}
+
+/* Gradient overlay on image to blend with card smoothly */
+.card-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(15, 18, 22, 0.95) 0%, rgba(15, 18, 22, 0.4) 30%, transparent 100%);
+  pointer-events: none;
+}
+
+.timeline-year {
+  font-size: 7rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fbd38d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 1;
+  text-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+  letter-spacing: -2px;
+}
+
+.timeline-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.timeline-desc {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .card-inner {
+    flex-direction: column-reverse;
+  }
+  .card-text {
+    width: 100%;
+    height: 55%;
+    padding: 30px;
+  }
+  .card-image-wrapper {
+    width: 100%;
+    height: 45%;
+  }
+  .card-image-wrapper::after {
+    background: linear-gradient(180deg, transparent 60%, rgba(16, 20, 26, 0.95) 100%);
+  }
+  .timeline-year { font-size: 3.5rem; }
+  .timeline-title { font-size: 1.8rem; }
+}
+
+@media (max-width: 600px) {
+  .card-content {
+    height: 550px;
+  }
+  .timeline-year { font-size: 3rem; }
+  .timeline-title { font-size: 1.4rem; }
+  .timeline-desc { font-size: 1rem; }
+}
