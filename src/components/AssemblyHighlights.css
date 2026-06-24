@@ -149,7 +149,8 @@
   }
   
   .highlight-slide {
-    width: 240px;
+    width: 85vw;
+    max-width: 320px;
   }
 
   .highlight-swiper .swiper-button-next,
@@ -163,11 +164,5 @@
   
   .highlight-swiper {
     padding-bottom: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .highlight-slide {
-    width: 220px;
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiArrowRight } from 'react-icons/fi';
 import './AboutSection.css';
 
 const AboutSection = () => {
@@ -46,9 +47,10 @@ const AboutSection = () => {
             <p className="text-secondary mb-8">
               Driven by a sincere dedication to community welfare and guided by an enduring sense of responsibility, Bhati has emerged as a dynamic figure—one who blends youthful energy with grassroots understanding. His journey stands as a testament to the belief that strong roots and sincere intent can bring about meaningful change.
             </p>
+            <div style={{ width: '60px', height: '4px', background: 'linear-gradient(90deg, #f97316, #eab308)', borderRadius: '2px', marginBottom: '2rem' }}></div>
             
-            <a href="#more" className="btn-secondary">
-              Know More About
+            <a href="#more" className="btn-secondary mt-4">
+              Know More About <FiArrowRight className="ml-2" />
             </a>
           </motion.div>
 

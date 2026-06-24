@@ -90,13 +90,23 @@
 }
 
 @media (max-width: 768px) {
+  .main-footer {
+    padding: 3rem 1rem 1.5rem;
+  }
   .footer-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    text-align: center;
   }
   .footer-emblem {
-    height: 45px;
+    height: 50px;
   }
   .footer-description {
     font-size: 0.95rem;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .footer-socials {
+    margin-bottom: 2rem;
   }
 }

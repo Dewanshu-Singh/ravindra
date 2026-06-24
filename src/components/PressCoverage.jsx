@@ -10,11 +10,11 @@ import 'swiper/css/pagination';
 import './PressCoverage.css';
 
 const newsItems = [
-  { id: 1, date: 'Dec 2025', img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&h=400&fit=crop' },
-  { id: 2, date: 'Dec 2025', img: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=600&h=400&fit=crop' },
-  { id: 3, date: 'Dec 2025', img: 'https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=600&h=400&fit=crop' },
-  { id: 4, date: 'Dec 2025', img: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=600&h=400&fit=crop' },
-  { id: 5, date: 'Dec 2025', img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&h=400&fit=crop' }
+  { id: 1, date: 'Latest News', img: '/newspaper-article.png', url: 'https://www.instagram.com/p/DYTrYbQETF9/' },
+  { id: 2, date: 'Press Release', img: '/newspaper-article-2.png', url: 'https://www.instagram.com/p/DYOrAUJkVDu/?img_index=3' },
+  { id: 3, date: 'Media Coverage', img: '/newspaper-article.png', url: 'https://www.instagram.com/p/DYTrYbQETF9/' },
+  { id: 4, date: 'News Update', img: '/newspaper-article-2.png', url: 'https://www.instagram.com/p/DYOrAUJkVDu/?img_index=3' },
+  { id: 5, date: 'Public Event', img: '/newspaper-article.png', url: 'https://www.instagram.com/p/DYTrYbQETF9/' }
 ];
 
 const PressCoverage = () => {
@@ -61,17 +61,19 @@ const PressCoverage = () => {
           >
             {newsItems.map((news) => (
               <SwiperSlide key={news.id} className="press-slide">
-                <div className="press-card">
-                  <div className="press-img-wrapper">
-                    <img src={news.img} alt={`Newspaper ${news.id}`} />
-                    <div className="press-overlay">
-                      <FiZoomIn className="zoom-icon" />
+                <a href={news.url} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
+                  <div className="press-card">
+                    <div className="press-img-wrapper">
+                      <img src={news.img} alt={`Newspaper ${news.id}`} />
+                      <div className="press-overlay">
+                        <FiZoomIn className="zoom-icon" />
+                      </div>
+                    </div>
+                    <div className="press-date-badge">
+                      {news.date}
                     </div>
                   </div>
-                  <div className="press-date-badge">
-                    {news.date}
-                  </div>
-                </div>
+                </a>
               </SwiperSlide>
             ))}
           </Swiper>

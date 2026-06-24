@@ -136,23 +136,41 @@
     width: 100%;
     height: 55%;
     padding: 30px;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
   .card-image-wrapper {
     width: 100%;
     height: 45%;
+    border-radius: 40px 40px 0 0;
   }
   .card-image-wrapper::after {
     background: linear-gradient(180deg, transparent 60%, rgba(16, 20, 26, 0.95) 100%);
   }
-  .timeline-year { font-size: 3.5rem; }
+  .timeline-year { font-size: 4rem; }
   .timeline-title { font-size: 1.8rem; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .card-container {
+    height: 100vh;
+  }
   .card-content {
-    height: 550px;
+    height: auto;
+    border-radius: 24px;
+  }
+  .card-inner {
+    flex-direction: column-reverse;
+  }
+  .card-text {
+    height: auto;
+    padding: 20px;
+  }
+  .card-image-wrapper {
+    height: 250px;
+    border-radius: 24px 24px 0 0;
   }
   .timeline-year { font-size: 3rem; }
-  .timeline-title { font-size: 1.4rem; }
+  .timeline-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
   .timeline-desc { font-size: 1rem; }
 }

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiPlay, FiArrowRight } from 'react-icons/fi';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
@@ -10,15 +10,16 @@ import 'swiper/css/pagination';
 import './Headlines.css';
 
 const headlineVideos = [
-  { id: 1, title: 'Headline 1', img: 'https://img.youtube.com/vi/XobA5Yawdt8/maxresdefault.jpg', url: 'https://youtu.be/XobA5Yawdt8' },
-  { id: 2, title: 'Headline 2', img: 'https://img.youtube.com/vi/MYvmS-1kSSI/maxresdefault.jpg', url: 'https://youtu.be/MYvmS-1kSSI' },
-  { id: 3, title: 'Headline 3', img: 'https://img.youtube.com/vi/HEyqztqG-WA/maxresdefault.jpg', url: 'https://youtu.be/HEyqztqG-WA' },
-  { id: 4, title: 'Headline 4', img: 'https://img.youtube.com/vi/XobA5Yawdt8/maxresdefault.jpg', url: 'https://youtu.be/XobA5Yawdt8' },
-  { id: 5, title: 'Headline 5', img: 'https://img.youtube.com/vi/MYvmS-1kSSI/maxresdefault.jpg', url: 'https://youtu.be/MYvmS-1kSSI' },
-  { id: 6, title: 'Headline 6', img: 'https://img.youtube.com/vi/HEyqztqG-WA/maxresdefault.jpg', url: 'https://youtu.be/HEyqztqG-WA' }
+  { id: 1, title: 'Headline 1', img: 'https://img.youtube.com/vi/AmNUz3YbHzc/maxresdefault.jpg', url: 'https://youtu.be/AmNUz3YbHzc' },
+  { id: 2, title: 'Headline 2', img: 'https://img.youtube.com/vi/ZvVhJHr1P2c/maxresdefault.jpg', url: 'https://youtu.be/ZvVhJHr1P2c' },
+  { id: 3, title: 'Headline 3', img: 'https://img.youtube.com/vi/k5CZIjlWWD0/maxresdefault.jpg', url: 'https://youtu.be/k5CZIjlWWD0' },
+  { id: 4, title: 'Headline 4', img: 'https://img.youtube.com/vi/3s9yMGFipg0/maxresdefault.jpg', url: 'https://youtu.be/3s9yMGFipg0' },
+  { id: 5, title: 'Headline 5', img: 'https://img.youtube.com/vi/JE_67bm4ogs/maxresdefault.jpg', url: 'https://youtu.be/JE_67bm4ogs' }
 ];
 
 const Headlines = () => {
+  const [playingId, setPlayingId] = useState(null);
+
   return (
     <section className="headlines-section section-padding">
       <div className="container">
@@ -40,40 +41,53 @@ const Headlines = () => {
           }}
         >
           <Swiper
-            effect={'coverflow'}
+            slidesPerView={1}
+            spaceBetween={30}
             grabCursor={true}
-            centeredSlides={true}
             loop={true}
-            breakpoints={{
-              320: { slidesPerView: 1.5 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 3 }
-            }}
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 150,
-              modifier: 2.5,
-              slideShadows: false,
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: true,
             }}
             navigation={true}
-            modules={[EffectCoverflow, Navigation, Pagination]}
-            className="headlines-swiper"
+            pagination={{ clickable: true, dynamicBullets: true }}
+            modules={[Navigation, Pagination, Autoplay]}
+            className="headlines-swiper single-player-swiper"
+            onSlideChange={() => setPlayingId(null)}
           >
-            {headlineVideos.map((video) => (
-              <SwiperSlide key={video.id} className="headlines-slide">
-                <a href={video.url} target="_blank" rel="noopener noreferrer" className="headline-card" style={{ display: 'block' }}>
-                  <div className="headline-thumbnail-wrapper">
-                    <img src={video.img} alt={video.title} />
-                    <div className="play-button-overlay">
-                      <div className="play-icon-circle-small">
-                        <FiPlay />
+            {headlineVideos.map((video) => {
+              const videoId = video.url.split('/').pop();
+              return (
+                <SwiperSlide key={video.id} className="headlines-slide single-slide">
+                  <div className="headline-card-wrapper">
+                    {playingId === video.id ? (
+                      <div className="headline-video-container">
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                          title={video.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="headline-card" onClick={() => setPlayingId(video.id)}>
+                        <div className="headline-thumbnail-wrapper">
+                          <img src={video.img} alt={video.title} />
+                          <div className="play-button-overlay">
+                            <div className="play-icon-circle-small">
+                              <FiPlay />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </a>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </motion.div>
 

@@ -19,6 +19,7 @@
 body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-color);
+  background-image: radial-gradient(circle at top right, rgba(249, 115, 22, 0.05) 0%, transparent 40%), radial-gradient(circle at bottom left, rgba(234, 179, 8, 0.03) 0%, transparent 40%);
   color: var(--text-primary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -28,6 +29,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
 }
 
 .gradient-text {
@@ -64,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0; 
   right: 0; 
   bottom: 0;
-  background: rgba(11, 12, 16, 0.45); /* Dark overlay reduced to keep background visible */
+  background: rgba(11, 12, 16, 0.45); /* Darkened to make text pop more and reduce bg image visibility */
   z-index: 0;
   pointer-events: none;
 }
@@ -76,14 +83,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glassmorphism */
 .glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--glass-border);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
-  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02), 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* Global Container */
@@ -91,6 +98,12 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
 }
 
 /* Scrollbar */
@@ -109,45 +122,81 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Buttons */
 .btn-primary {
+  position: relative;
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: #fff;
   border: none;
-  padding: 12px 24px;
+  padding: 12px 28px;
   border-radius: 30px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.2);
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 30px;
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  opacity: 0;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(249, 115, 22, 0.4);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
 }
 
 .btn-secondary {
-  background: transparent;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text-primary);
-  border: 1px solid var(--glass-border);
-  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 28px;
   border-radius: 30px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
 }
 
 .btn-secondary:hover {
-  background: var(--glass-bg);
-  border-color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(249, 115, 22, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(249, 115, 22, 0.1);
+  transform: translateY(-3px);
+}
+
+.btn-secondary:hover::before {
+  left: 100%;
 }
 
 /* Section Margins */
@@ -157,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 50px 0;
+    padding: 60px 0;
   }
 }
 

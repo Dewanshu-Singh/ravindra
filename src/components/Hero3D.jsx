@@ -72,6 +72,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100 }}
           >
             <div className="hero-image-backdrop gradient-bg"></div>
+            <div className="hero-glowing-ring"></div>
             <motion.img 
               src="/herosection.png" 
               alt="Ravindra Singh Bhati" 
