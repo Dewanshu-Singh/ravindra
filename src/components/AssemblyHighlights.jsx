@@ -11,7 +11,7 @@ import './AssemblyHighlights.css';
 
 const highlightVideos = [
   { id: 1, title: 'Assembly Speech 1', img: '/shorts1.png', ytId: 'vParm8K1JnA' },
-  { id: 2, title: 'Assembly Speech 2', img: 'https://img.youtube.com/vi/wVPt6HJ-1wg/hqdefault.jpg', ytId: 'wVPt6HJ-1wg' },
+  { id: 2, title: 'Assembly Speech 2', img: '/shorts2.png', ytId: 'wVPt6HJ-1wg' },
   { id: 3, title: 'Assembly Speech 3', img: 'https://img.youtube.com/vi/yAVkVdjMKHU/hqdefault.jpg', ytId: 'yAVkVdjMKHU' },
   { id: 4, title: 'Assembly Speech 4', img: 'https://img.youtube.com/vi/A_OKNtRk0hY/hqdefault.jpg', ytId: 'A_OKNtRk0hY' },
   { id: 5, title: 'Assembly Speech 1', img: 'https://img.youtube.com/vi/vParm8K1JnA/hqdefault.jpg', ytId: 'vParm8K1JnA' },
