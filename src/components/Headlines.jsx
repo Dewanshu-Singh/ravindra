@@ -19,6 +19,21 @@ const headlineVideos = [
 
 const Headlines = () => {
   const [playingId, setPlayingId] = useState(null);
+  const [swiperRef, setSwiperRef] = useState(null);
+
+  const handlePlayClick = (id) => {
+    setPlayingId(id);
+    if (swiperRef && swiperRef.autoplay) {
+      swiperRef.autoplay.stop();
+    }
+  };
+
+  const handleSlideChange = () => {
+    setPlayingId(null);
+    if (swiperRef && swiperRef.autoplay && !swiperRef.autoplay.running) {
+      swiperRef.autoplay.start();
+    }
+  };
 
   return (
     <section className="headlines-section section-padding">
@@ -41,19 +56,20 @@ const Headlines = () => {
           }}
         >
           <Swiper
+            onSwiper={setSwiperRef}
             slidesPerView={1}
             spaceBetween={30}
             grabCursor={true}
             loop={true}
             autoplay={{
-              delay: 3000,
-              disableOnInteraction: true,
+              delay: 5000,
+              disableOnInteraction: false,
             }}
             navigation={true}
             pagination={{ clickable: true, dynamicBullets: true }}
             modules={[Navigation, Pagination, Autoplay]}
             className="headlines-swiper single-player-swiper"
-            onSlideChange={() => setPlayingId(null)}
+            onSlideChange={handleSlideChange}
           >
             {headlineVideos.map((video) => {
               const videoId = video.url.split('/').pop();
@@ -73,7 +89,7 @@ const Headlines = () => {
                         ></iframe>
                       </div>
                     ) : (
-                      <div className="headline-card" onClick={() => setPlayingId(video.id)}>
+                      <div className="headline-card" onClick={() => handlePlayClick(video.id)}>
                         <div className="headline-thumbnail-wrapper">
                           <img src={video.img} alt={video.title} />
                           <div className="play-button-overlay">
