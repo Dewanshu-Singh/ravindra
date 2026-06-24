@@ -13,7 +13,7 @@ const highlightVideos = [
   { id: 1, title: 'Assembly Speech 1', img: '/shorts1.png', ytId: 'vParm8K1JnA' },
   { id: 2, title: 'Assembly Speech 2', img: '/shorts2.png', ytId: 'wVPt6HJ-1wg' },
   { id: 3, title: 'Assembly Speech 3', img: '/shorts3.png', ytId: 'yAVkVdjMKHU' },
-  { id: 4, title: 'Assembly Speech 4', img: 'https://img.youtube.com/vi/A_OKNtRk0hY/hqdefault.jpg', ytId: 'A_OKNtRk0hY' }
+  { id: 4, title: 'Assembly Speech 4', img: '/shorts4.png', ytId: 'A_OKNtRk0hY' }
 ];
 
 const AssemblyHighlights = () => {
