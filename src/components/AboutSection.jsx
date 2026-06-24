@@ -18,12 +18,14 @@ const AboutSection = () => {
           >
             <div className="image-backdrop gradient-bg"></div>
             {/* We use a placeholder image URL or a stylistic glass card here since we don't have the real image locally */}
-            <div className="about-image glass-panel">
+            <div className="about-image premium-glass-panel">
+              <div className="image-overlay"></div>
               <img 
-                src="https://ravindrasinghbhati.com/wp-content/themes/ravsaa/assets/img/ravsa-about-img.webp" 
+                src="/Ravindra@.png" 
                 alt="Ravindra Singh Bhati" 
-                className="img-fluid"
+                className="img-fluid premium-img"
               />
+              <div className="glow-effect"></div>
             </div>
           </motion.div>
 

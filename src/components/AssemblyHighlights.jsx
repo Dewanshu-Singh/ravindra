@@ -11,8 +11,8 @@ import './AssemblyHighlights.css';
 
 const highlightVideos = [
   { id: 1, title: 'Assembly Speech 1', img: '/shorts1.png', ytId: 'vParm8K1JnA' },
-  { id: 2, title: 'Assembly Speech 2', img: '/shorts2.png', ytId: 'wVPt6HJ-1wg' },
-  { id: 3, title: 'Assembly Speech 3', img: '/shorts3.png', ytId: 'yAVkVdjMKHU' },
+  { id: 2, title: 'Assembly Speech 2', img: '/shorts6.png', ytId: 'wVPt6HJ-1wg' },
+  { id: 3, title: 'Assembly Speech 3', img: '/shorts5.png', ytId: 'yAVkVdjMKHU' },
   { id: 4, title: 'Assembly Speech 4', img: '/shorts4.png', ytId: 'A_OKNtRk0hY' }
 ];
 
@@ -59,11 +59,7 @@ const AssemblyHighlights = () => {
             grabCursor={true}
             centeredSlides={true}
             loop={true}
-            breakpoints={{
-              320: { slidesPerView: 1.5 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 3 }
-            }}
+            slidesPerView={'auto'}
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
@@ -75,8 +71,8 @@ const AssemblyHighlights = () => {
             modules={[EffectCoverflow, Navigation, Pagination]}
             className="highlight-swiper"
           >
-            {highlightVideos.map((video) => (
-              <SwiperSlide key={video.id} className="highlight-slide">
+            {[...highlightVideos, ...highlightVideos].map((video, index) => (
+              <SwiperSlide key={`${video.id}-${index}`} className="highlight-slide">
                 <div 
                   className="vertical-video-card" 
                   style={{ display: 'block', cursor: 'pointer' }}

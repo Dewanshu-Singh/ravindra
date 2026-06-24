@@ -21,7 +21,6 @@ body {
   background-color: var(--bg-color);
   background-image: radial-gradient(circle at top right, rgba(249, 115, 22, 0.05) 0%, transparent 40%), radial-gradient(circle at bottom left, rgba(234, 179, 8, 0.03) 0%, transparent 40%);
   color: var(--text-primary);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 

@@ -33,26 +33,72 @@
   100% { opacity: 0.6; filter: blur(40px); transform: scale(1.02); }
 }
 
-.about-image {
+.premium-glass-panel {
   position: relative;
   z-index: 1;
   padding: 15px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(249, 115, 22, 0.15);
+  border-radius: 32px;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
 }
 
-.about-image img {
+.premium-glass-panel:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.7), 0 0 60px rgba(249, 115, 22, 0.3);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.premium-img {
   width: 100%;
   height: auto;
-  border-radius: 16px;
+  border-radius: 20px;
   display: block;
-  transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s ease;
+  filter: contrast(1.05) saturate(1.1);
 }
 
-.about-image-wrapper:hover .about-image img {
-  transform: scale(1.05);
+.premium-glass-panel:hover .premium-img {
+  transform: scale(1.08);
+  filter: contrast(1.1) saturate(1.2);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 2;
+  border-radius: 32px;
+  pointer-events: none;
+}
+
+.glow-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transform: rotate(45deg);
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 3;
+}
+
+.premium-glass-panel:hover .glow-effect {
+  opacity: 1;
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-50%) translateY(-50%) rotate(45deg); }
+  100% { transform: translateX(50%) translateY(50%) rotate(45deg); }
 }
 
 .about-image-wrapper:hover .image-backdrop {

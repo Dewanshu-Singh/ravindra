@@ -2,12 +2,10 @@
   position: relative;
   min-height: 100vh;
   padding-top: 120px; /* Only top padding */
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: flex-end; /* Align content to bottom */
   overflow: hidden;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
 }
 
 .hero-canvas-container {
@@ -126,14 +124,7 @@
   opacity: 0.85;
 }
 
-.hero-glowing-ring::before {
-  content: '';
-  position: absolute;
-  top: -12px; left: -12px; right: -12px; bottom: -12px;
-  border-radius: 50%;
-  border: 2px dashed rgba(249, 115, 22, 0.5);
-  animation: spin-ring 25s linear infinite reverse;
-}
+
 
 @keyframes spin-ring {
   0% { transform: translate(-50%, -50%) rotate(0deg); }

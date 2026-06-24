@@ -61,7 +61,13 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   background: #10141a;
-  transition: transform 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.vertical-video-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
+  border-color: rgba(249, 115, 22, 0.5);
 }
 
 .video-thumbnail-wrapper {
@@ -83,8 +89,8 @@
   bottom: 0; 
   left: 0; 
   width: 100%; 
-  height: 40%;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
@@ -108,25 +114,27 @@
 }
 
 .play-icon-circle {
-  width: 60px;
-  height: 60px;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(5px);
+  width: 70px;
+  height: 70px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(255,255,255,0.6);
+  border: 2px solid rgba(255,255,255,0.8);
   color: white;
-  font-size: 1.5rem;
-  padding-left: 5px; /* Visual center adjustment for play icon */
-  transition: transform 0.3s ease, background 0.3s ease;
+  font-size: 2rem;
+  padding-left: 6px; /* Visual center adjustment for play icon */
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .vertical-video-card:hover .play-icon-circle {
-  transform: scale(1.1);
-  background: rgba(249, 115, 22, 0.8);
+  transform: scale(1.2);
+  background: linear-gradient(135deg, #f97316, #eab308);
   border-color: transparent;
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
 }
 
 /* Customizing Swiper Navigation Arrows */
@@ -139,6 +147,7 @@
   border-radius: 50%;
   backdrop-filter: blur(4px);
   transition: all 0.3s ease;
+  z-index: 10;
 }
 
 .highlight-swiper .swiper-button-next:after,
