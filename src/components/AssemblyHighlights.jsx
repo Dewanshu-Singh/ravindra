@@ -10,9 +10,9 @@ import 'swiper/css/pagination';
 import './AssemblyHighlights.css';
 
 const highlightVideos = [
-  { id: 1, title: 'Assembly Speech 1', img: '/shorts1.png', ytId: 'vParm8K1JnA' },
+  { id: 1, title: 'Assembly Speech 1', img: '/shorts5.png', ytId: 'vParm8K1JnA' },
   { id: 2, title: 'Assembly Speech 2', img: '/shorts6.png', ytId: 'wVPt6HJ-1wg' },
-  { id: 3, title: 'Assembly Speech 3', img: '/shorts5.png', ytId: 'yAVkVdjMKHU' },
+  { id: 3, title: 'Assembly Speech 3', img: '/shorts1.png', ytId: 'yAVkVdjMKHU' },
   { id: 4, title: 'Assembly Speech 4', img: '/shorts4.png', ytId: 'A_OKNtRk0hY' }
 ];
 
