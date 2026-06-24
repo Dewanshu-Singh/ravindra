@@ -22,12 +22,31 @@
   align-items: center;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 800;
+.custom-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
   text-decoration: none;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
+}
+
+.nav-emblem {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+}
+
+.brand-text {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #D4AF37; /* Base gold color */
+  background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 .nav-links {
@@ -113,8 +132,8 @@
 }
 
 @media (max-width: 992px) {
-  .logo {
-    font-size: 1.2rem;
+  .brand-text {
+    font-size: 1.3rem;
   }
   .nav-links {
     gap: 1.2rem;
@@ -128,10 +147,11 @@
   .mobile-only {
     display: block;
   }
-  .logo-img {
-    height: 35px; /* Adjust if logo exists */
+  .nav-emblem {
+    height: 40px;
   }
-  .logo {
+  .brand-text {
     font-size: 1.1rem;
+    letter-spacing: 1px;
   }
 }

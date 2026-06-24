@@ -30,8 +30,13 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
-        <a href="/" className="logo">
-          Ravindra Singh <span className="gradient-text">Bhati</span>
+        <a href="/" className="logo custom-logo">
+          <img 
+            src="https://ravindrasinghbhati.com/wp-content/uploads/2025/11/cropped-Ashok-Stambh-National-Emblem-of-India_11zon-192x192.webp" 
+            alt="Emblem" 
+            className="nav-emblem" 
+          />
+          <span className="brand-text">RAVINDRA SINGH BHATI</span>
         </a>
 
         {/* Desktop Nav */}
