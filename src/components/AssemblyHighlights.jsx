@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FiPlay, FiVideo } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiPlay, FiVideo, FiX } from 'react-icons/fi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -10,15 +10,27 @@ import 'swiper/css/pagination';
 import './AssemblyHighlights.css';
 
 const highlightVideos = [
-  { id: 1, title: 'Assembly Speech 1', img: 'https://img.youtube.com/vi/vParm8K1JnA/hqdefault.jpg', url: 'https://youtu.be/vParm8K1JnA' },
-  { id: 2, title: 'Assembly Speech 2', img: 'https://img.youtube.com/vi/wVPt6HJ-1wg/hqdefault.jpg', url: 'https://youtu.be/wVPt6HJ-1wg' },
-  { id: 3, title: 'Assembly Speech 3', img: 'https://img.youtube.com/vi/yAVkVdjMKHU/hqdefault.jpg', url: 'https://youtu.be/yAVkVdjMKHU' },
-  { id: 4, title: 'Assembly Speech 4', img: 'https://img.youtube.com/vi/A_OKNtRk0hY/hqdefault.jpg', url: 'https://youtu.be/A_OKNtRk0hY' },
-  { id: 5, title: 'Assembly Speech 1', img: 'https://img.youtube.com/vi/vParm8K1JnA/hqdefault.jpg', url: 'https://youtu.be/vParm8K1JnA' },
-  { id: 6, title: 'Assembly Speech 2', img: 'https://img.youtube.com/vi/wVPt6HJ-1wg/hqdefault.jpg', url: 'https://youtu.be/wVPt6HJ-1wg' }
+  { id: 1, title: 'Assembly Speech 1', img: 'https://img.youtube.com/vi/vParm8K1JnA/hqdefault.jpg', ytId: 'vParm8K1JnA' },
+  { id: 2, title: 'Assembly Speech 2', img: 'https://img.youtube.com/vi/wVPt6HJ-1wg/hqdefault.jpg', ytId: 'wVPt6HJ-1wg' },
+  { id: 3, title: 'Assembly Speech 3', img: 'https://img.youtube.com/vi/yAVkVdjMKHU/hqdefault.jpg', ytId: 'yAVkVdjMKHU' },
+  { id: 4, title: 'Assembly Speech 4', img: 'https://img.youtube.com/vi/A_OKNtRk0hY/hqdefault.jpg', ytId: 'A_OKNtRk0hY' },
+  { id: 5, title: 'Assembly Speech 1', img: 'https://img.youtube.com/vi/vParm8K1JnA/hqdefault.jpg', ytId: 'vParm8K1JnA' },
+  { id: 6, title: 'Assembly Speech 2', img: 'https://img.youtube.com/vi/wVPt6HJ-1wg/hqdefault.jpg', ytId: 'wVPt6HJ-1wg' }
 ];
 
 const AssemblyHighlights = () => {
+  const [activeVideoId, setActiveVideoId] = useState(null);
+
+  const openVideo = (ytId) => {
+    setActiveVideoId(ytId);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeVideo = () => {
+    setActiveVideoId(null);
+    document.body.style.overflow = '';
+  };
+
   return (
     <section className="assembly-section section-padding">
       <div className="container">
@@ -67,7 +79,11 @@ const AssemblyHighlights = () => {
           >
             {highlightVideos.map((video) => (
               <SwiperSlide key={video.id} className="highlight-slide">
-                <a href={video.url} target="_blank" rel="noopener noreferrer" className="vertical-video-card" style={{ display: 'block' }}>
+                <div 
+                  className="vertical-video-card" 
+                  style={{ display: 'block', cursor: 'pointer' }}
+                  onClick={() => openVideo(video.ytId)}
+                >
                   <div className="video-thumbnail-wrapper">
                     <img src={video.img} alt={video.title} />
                     <div className="play-button-overlay">
@@ -76,12 +92,46 @@ const AssemblyHighlights = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </motion.div>
       </div>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {activeVideoId && (
+          <motion.div 
+            className="video-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeVideo}
+          >
+            <motion.div 
+              className="video-modal-content"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="video-modal-close" onClick={closeVideo}>
+                <FiX />
+              </button>
+              <div className="video-modal-iframe-container">
+                <iframe 
+                  src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1`} 
+                  title="YouTube video player" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
